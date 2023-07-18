@@ -10,6 +10,28 @@
     <script defer src="js/script.js"></script>
 </head>
 <body>
-    
+    <div class="main-container" id="main-container">
+        <div class="taskPanel" id="taskPanel">
+            <div class="date" id="date">
+                <div class="dateRight" id="dateRight">
+                    <div class="dateNumber" id="dateNumber">
+                    </div>
+                    <div class="dateMonth" id="dateMonth"></div>
+                    <div class="dateYear" id="dateYear"></div>
+                </div>
+                <div class="dateLeft" id="dateLeft">
+                    <div class="dayOfWeek" id="dayOfWeek">
+                    </div>
+                </div>
+            </div>
+            <form action="" method="">
+                <input type="text" name="newTask" autocomplete="off" id="newTask" required placeholder="Nueva tarea">
+                <!--<input type="text" name="taskDescription" autocomplete="off" id="taskDescription" required placeholder="Descripción"> -->
+                <button type="submit" name="addTask" id="addTask">+</button>
+            </form>
+            <div class="task-container" id="task-container">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
