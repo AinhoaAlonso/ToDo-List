@@ -11,15 +11,19 @@
 </head>
 <body>
     <div class="main-container" id="main-container">
+        <div class="main-title" id="main-title">
+            <h1>Mi Lista de Tareas</h1>
+        </div>
         <div class="taskPanel" id="taskPanel">
             <div class="date" id="date">
-                <div class="dateRight" id="dateRight">
-                    <div class="dateNumber" id="dateNumber">
-                    </div>
-                    <div class="dateMonth" id="dateMonth"></div>
-                    <div class="dateYear" id="dateYear"></div>
-                </div>
                 <div class="dateLeft" id="dateLeft">
+                    <div class="dateNumber" id="dateNumber"></div>
+                    <div>
+                        <div class="dateMonth" id="dateMonth"></div>
+                        <div class="dateYear" id="dateYear"></div>
+                    </div>
+                </div>
+                <div class="dateRight" id="dateRight">
                     <div class="dayOfWeek" id="dayOfWeek">
                     </div>
                 </div>
@@ -30,6 +34,7 @@
                 <button type="submit" name="addTask" id="addTask">+</button>
             </form>
             <div class="task-container" id="task-container">
+                <div class="buttonTaskDone" id="buttonTaskDone"></div>
             </div>
         </div>
     </div>

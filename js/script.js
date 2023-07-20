@@ -14,7 +14,7 @@ const addTaskName = document.querySelector("#addTask");
 const setDate = () =>{
     const date = new Date ();
     dateNumber.textContent = date.getDate();
-    dateMonth.textContent = date.getMonth() + 1;
+    dateMonth.textContent = date.toLocaleString ('es', {month: 'short'});
     dateYear.textContent = date.getFullYear();
     dayOfWeek.textContent = date.toLocaleString ('es', { weekday: 'long' });
 
@@ -28,25 +28,35 @@ addNewTask.addEventListener('input', function(event){
 
 addTaskName.addEventListener('click', function(event){
     const value = addNewTask.value;
-    if (!value) return;
+    if (!value) return;//Si no se escribe ningun valor no sigue con la función
     const task = document.createElement('div');
     task.classList.add ('task'); 
-    task.id = 'task';
     const taskContainer = document.querySelector('#task-container');
     taskContainer.appendChild(task);
     addNewTask.value = "";
     console.log (task);
-    task.addEventListener ('click', changeTask());
+    const imgDone = document.createElement ('img');
+    //imgDone.innerText = 'Tarea realizada';
+    imgDone.classList.add ('imgdone');
+    imgDone.src = 'images/checkgris.jpg';
+    imgDone.alt = 'Check gris de tarea realizada';
+    const imgTaskDone = document.querySelector('#buttonTaskDone');
+    imgTaskDone.appendChild(imgDone);
+    console.log(imgDone)
+    //task.addEventListener ('click', changeTask());
     task.textContent = value;
-    taskContainer.prepend(task);
+    taskContainer.prepend(task); // Agrega cada tarea al principio de la lista
+
+
+    
     
     
 });
 
 
-const changeTask = (event) =>{
-    event.target.classList.toggle ('done');
-}
+//const changeTask = (event) =>{
+    //event.target.classList.toggle ('done');
+//}
 
 
 

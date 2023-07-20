@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+:root{
+    --tittlecolor: #F72F62;
+
+}
+*::first-letter{
+    text-transform: capitalize;
+}
+
+body{
+    height: 80%;
+}
+
+#main-container{
+    font-family: merriweather, sans-serif ;
+    height: 100%;
+    margin: 20px 75px;
+    max-width: 750px;
+}
+
+#main-title{
+    color: var(--tittlecolor);
+    font-size: 30px;
+    text-align: center;
+    
+}
+
+#date{
+    align-items: center;
+    display: flex; 
+    justify-content: space-between;
+}
+
+#dateLeft{
+    display: flex;
+    align-items: center;
+    
+}
+#dateNumber{
+    font-size: 50px;
+}
+
+#dateRight{
+    font-size: 35px;
+    margin: 0px 150px 0px 0px;
+
+}
+
+#newTask{
+
+}
+
