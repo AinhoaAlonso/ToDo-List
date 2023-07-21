@@ -8,6 +8,12 @@ const dateYear = document.querySelector ("#dateYear");
 const dayOfWeek = document.querySelector ("#dayOfWeek");
 const addNewTask = document.querySelector("#newTask");
 const addTaskName = document.querySelector("#addTask");
+const addDescription = document.querySelector("#taskDescription");
+
+const taskContainer = document.querySelector('#task-container');
+const taskList = document.querySelector('#taskList');
+
+
 
 
 // mostrar la fecha
@@ -26,32 +32,62 @@ addNewTask.addEventListener('input', function(event){
     
 });
 
+//Añade la descripción
+addDescription.addEventListener('textarea', function(event){
+    event.preventDefault();
+});
+
+
+
 addTaskName.addEventListener('click', function(event){
+
     const value = addNewTask.value;
+    const descriptionvalue = addDescription.value;
+
     if (!value) return;//Si no se escribe ningun valor no sigue con la función
+
+    const taskItem = document.createElement ('li');
+    taskItem.classList.add ('taskItem');
+  
+
+    const taskInformation = document.createElement ('div');
+    taskInformation.classList.add ('taskInformation');
+    
+
     const task = document.createElement('div');
     task.classList.add ('task'); 
-    const taskContainer = document.querySelector('#task-container');
-    taskContainer.appendChild(task);
-    addNewTask.value = "";
-    console.log (task);
+    task.textContent = value;
+    
+    const taskDescription = document.createElement('div');
+    taskDescription.classList.add ('taskDescription');
+    taskDescription.textContent = descriptionvalue;
+    
     const imgDone = document.createElement ('img');
-    //imgDone.innerText = 'Tarea realizada';
     imgDone.classList.add ('imgdone');
     imgDone.src = 'images/checkgris.jpg';
     imgDone.alt = 'Check gris de tarea realizada';
-    const imgTaskDone = document.querySelector('#buttonTaskDone');
-    imgTaskDone.appendChild(imgDone);
-    console.log(imgDone)
-    //task.addEventListener ('click', changeTask());
-    task.textContent = value;
-    taskContainer.prepend(task); // Agrega cada tarea al principio de la lista
+    imgDone.style.width = '30px'; // Establece el ancho deseado para la imagen
+    imgDone.style.height = '30px';
+    console.log(imgDone);
 
 
     
     
+    taskList.appendChild(taskItem);
+    taskList.prepend(taskItem);
+    taskItem.appendChild(taskInformation);
+    taskInformation.appendChild(task);
+    taskInformation.appendChild(taskDescription);
+    taskItem.appendChild(imgDone);
+
+    addNewTask.value = "";
+    addDescription.value = "";
     
+    console.log (task);
+    
+
 });
+
 
 
 //const changeTask = (event) =>{
@@ -62,7 +98,8 @@ addTaskName.addEventListener('click', function(event){
 
 
 setDate();
-console.log(addNewTask);
+console.log (addNewTask);
 console.log (addTaskName);
+console.log (addDescription);
 
 

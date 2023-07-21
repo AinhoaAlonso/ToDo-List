@@ -2,6 +2,7 @@
 
 :root{
     --tittlecolor: #F72F62;
+    --backgroundcolor: #DE6174;
 
 }
 *::first-letter{
@@ -16,7 +17,7 @@ body{
     font-family: merriweather, sans-serif ;
     height: 100%;
     margin: 20px 75px;
-    max-width: 750px;
+    max-width: 900px;
 }
 
 #main-title{
@@ -35,19 +36,62 @@ body{
 #dateLeft{
     display: flex;
     align-items: center;
-    
 }
 #dateNumber{
     font-size: 50px;
 }
 
 #dateRight{
-    font-size: 35px;
-    margin: 0px 150px 0px 0px;
+    font-size: 25px;
+    text-align: right;
+    margin: 0px 50px 0px 0px;
 
 }
 
 #newTask{
-
+    font-size: 25px;
+    border-radius: 25px;
+    margin: 20px;
+    opacity: 0.5;
+    padding-left: 20px;
+    width: 40%;
 }
+
+#addTask{
+    color: white;
+    border:none;
+    border-radius: 35px;
+    background-color: var(--tittlecolor);
+    font-size: 20px;
+}
+
+#taskDescription{
+   
+    font-size: 25px;
+    height: 200px;
+    border-radius: 25px;
+    margin: 10px 20px;
+    opacity: 0.8;
+    padding-left: 20px;
+    text-align: top;
+    width: 90%;
+}
+
+.taskItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.imgdone{
+    height: auto;
+}
+
+.taskInformation{
+    font-size: 25px;
+}
+.task{
+    
+}
+
 
