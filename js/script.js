@@ -8,7 +8,7 @@ const dateYear = document.querySelector ("#dateYear");
 const dayOfWeek = document.querySelector ("#dayOfWeek");
 const addNewTask = document.querySelector("#newTask");
 const addTaskName = document.querySelector("#addTask");
-const addDescription = document.querySelector("#taskDescription");
+const addDescription = document.querySelector("#addDescription");
 
 const taskContainer = document.querySelector('#task-container');
 const taskList = document.querySelector('#taskList');
@@ -55,51 +55,60 @@ addTaskName.addEventListener('click', function(event){
     
 
     const task = document.createElement('div');
-    task.classList.add ('task'); 
+    task.classList.add ('task');
     task.textContent = value;
+    
     
     const taskDescription = document.createElement('div');
     taskDescription.classList.add ('taskDescription');
     taskDescription.textContent = descriptionvalue;
     
-    const imgDone = document.createElement ('img');
-    imgDone.classList.add ('imgdone');
-    imgDone.src = 'images/checkgris.jpg';
-    imgDone.alt = 'Check gris de tarea realizada';
-    imgDone.style.width = '30px'; // Establece el ancho deseado para la imagen
-    imgDone.style.height = '30px';
-    console.log(imgDone);
+    const imgCheck = document.createElement ('img');
+    imgCheck.classList.add ('imgCheck');
+    imgCheck.src = 'images/checkgris.jpg';
+    imgCheck.alt = 'Check gris de tarea realizada';
+    imgCheck.style.width = '30px'; // Establece el ancho deseado para la imagen
+    imgCheck.style.height = '30px';
+    imgCheck.addEventListener ('click', changeTask);
 
+    const imgTrash = document.createElement ('img');
+    imgTrash.classList.add ('imgTrash');
+    imgTrash.src = 'images/papelera.jpg';
+    imgTrash.alt = 'Papelera';
+    imgTrash.style.width = '30px'; // Establece el ancho deseado para la imagen
+    imgTrash.style.height = '30px';
+    imgTrash.addEventListener ('click', deleteTask);
+    
 
-    
-    
     taskList.appendChild(taskItem);
     taskList.prepend(taskItem);
     taskItem.appendChild(taskInformation);
     taskInformation.appendChild(task);
     taskInformation.appendChild(taskDescription);
-    taskItem.appendChild(imgDone);
+    taskItem.appendChild(imgCheck);
+    taskItem.appendChild(imgTrash);
 
     addNewTask.value = "";
     addDescription.value = "";
     
-    console.log (task);
-    
+    console.log (task);  
 
 });
 
-
-
-//const changeTask = (event) =>{
-    //event.target.classList.toggle ('done');
-//}
-
+const changeTask = (event) => {
+    const imgCheck = event.currentTarget;
+    const taskItem = imgCheck.closest('.taskItem');
+    taskItem.classList.toggle('done');
+};
+const deleteTask = (event) => {
+    const imgTrash = event.currentTarget;
+    const taskItem = imgTrash.closest('.taskItem');
+    taskItem.remove();
+};
 
 
 
 setDate();
-console.log (addNewTask);
-console.log (addTaskName);
-console.log (addDescription);
+
 
 
