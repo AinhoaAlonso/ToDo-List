@@ -2,7 +2,8 @@
 
 :root{
     --tittlecolor: #F72F62;
-    --backgroundcolor: #DE6174;
+    --textcolor: #DE6174;
+    --backgroundcolor: #E3E3E3;
 
 }
 *::first-letter{
@@ -26,6 +27,9 @@ body{
     text-align: center;
     
 }
+#taskPanel{
+    background-color: var(--backgroundcolor);
+}
 
 #date{
     align-items: center;
@@ -36,6 +40,7 @@ body{
 #dateLeft{
     display: flex;
     align-items: center;
+    margin-left: 30px;
 }
 #dateNumber{
     font-size: 75px;
@@ -111,7 +116,7 @@ body{
 }
 
 .taskItem.done .taskInformation {
-    color: var(--backgroundcolor);        
+    color: var(--textcolor);        
     opacity: 0.5;
     text-decoration: line-through;
 }
