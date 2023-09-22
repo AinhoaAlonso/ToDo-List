@@ -52,6 +52,8 @@ console.log("ok enlazado")
       task.classList.add("task");
       task.textContent = taskData.value;
 
+      
+
       const taskDescription = document.createElement("div");
       taskDescription.classList.add("taskDescription");
       taskDescription.textContent = taskData.description;
@@ -74,6 +76,14 @@ console.log("ok enlazado")
       imgTrash.addEventListener ('click', deleteTask);
       //imgTrash.addEventListener("click", () => deleteTask(taskData));
 
+      const imgEdit = document.createElement("img");
+      imgEdit.classList.add("imgEdit");
+      imgEdit.src = "images/editar.jpg";
+      imgEdit.alt = "Editar";
+      imgEdit.style.width = "30px"; // Establece el ancho deseado para la imagen
+      imgEdit.style.height = "30px";
+      imgEdit.addEventListener ('click', () => startEditingTask(taskData.id));
+
       taskList.appendChild(taskItem);
       taskList.prepend(taskItem);
       taskItem.appendChild(taskInformation);
@@ -81,6 +91,7 @@ console.log("ok enlazado")
       taskInformation.appendChild(taskDescription);
       taskItem.appendChild(imgCheck);
       taskItem.appendChild(imgTrash);
+      taskItem.appendChild(imgEdit);
 
       addNewTask.value = "";
       addDescription.value = "";
@@ -110,12 +121,90 @@ console.log("ok enlazado")
       createTaskElement(taskData);
     });
 
+
+    //Editar la tarea
+    const startEditingTask = (taskId) => {
+      // Encuentra la tarea por su ID en el array
+      const taskIndex = tasksArray.findIndex(task => task.id === taskId);
+    
+      if (taskIndex !== -1) {
+        const taskToEdit = tasksArray[taskIndex];
+    
+        // Crea un campo de entrada de texto para el nombre
+        const newNameInput = document.createElement("input");
+        newNameInput.type = ("text");
+        newNameInput.classList.add("newNameInput");
+        newNameInput.value = taskToEdit.value;
+    
+        // Crea un campo de entrada de texto para la descripción
+        const newDescriptionInput = document.createElement("input");
+        newDescriptionInput.type = ("text");
+        newDescriptionInput.classList.add("newDescriptionInput");
+        newDescriptionInput.value = taskToEdit.description;
+    
+        // Reemplaza el contenido de la tarea con los campos de entrada
+        const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+        if (taskItem) {
+          const task = taskItem.querySelector(".task");
+          const taskDescription = taskItem.querySelector(".taskDescription");
+          if (task && taskDescription) {
+            task.innerHTML = '';
+            taskDescription.innerHTML = '';
+            task.appendChild(newNameInput);
+            taskDescription.appendChild(newDescriptionInput);
+          }
+        }
+    
+        // Agrega un botón para guardar los cambios
+        const saveButton = document.createElement("button");
+        saveButton.type =("submit");
+        saveButton.classList.add("saveButton");
+        saveButton.textContent = "Guardar";
+        saveButton.addEventListener("click", () => saveEditedTask(taskId, newNameInput.value, newDescriptionInput.value));
+        
+        // Agrega el botón de guardar a la tarea
+        taskItem.appendChild(saveButton);
+      }
+    };
+
+    const saveEditedTask = (taskId, newName, newDescription) => {
+      // Encuentra la tarea por su ID en el array
+      const taskIndex = tasksArray.findIndex(task => task.id === taskId);
+    
+      if (taskIndex !== -1) {
+        // Actualiza el valor y la descripción de la tarea en el array
+        tasksArray[taskIndex].value = newName;
+        tasksArray[taskIndex].description = newDescription;
+    
+        // Actualiza el array de tareas en el Local Storage
+        localStorage.setItem("tasks", JSON.stringify(tasksArray));
+    
+        // Actualiza la representación visual de la tarea
+        const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+        if (taskItem) {
+          const task = taskItem.querySelector(".task");
+          const taskDescription = taskItem.querySelector(".taskDescription");
+          if (task && taskDescription) {
+            task.innerHTML = newName;
+            taskDescription.innerHTML = newDescription;
+          }
+          const saveButton = taskItem.querySelector("button");
+            if (saveButton) {
+            saveButton.remove();
+            }
+        }
+      }
+    };
+
     // Marcar la tarea como completada
     const changeTask = (event) => {
 
         const imgCheck = event.currentTarget;
         const taskItem = imgCheck.closest('.taskItem');
-        const index = Array.from(taskList.children).indexOf(taskItem);
+        const taskId = taskItem.dataset.taskId; 
+
+        //const index = Array.from(taskList.children).indexOf(taskItem);
+        const index = tasksArray.findIndex(task => task.id === parseInt(taskId));
 
         if (index !== -1) {
             tasksArray[index].done = !tasksArray[index].done;
