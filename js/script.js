@@ -156,7 +156,7 @@ console.log("ok enlazado")
         newDescriptionInput.value = taskToEdit.description;
     
         // Reemplaza el contenido de la tarea con los campos de entrada
-        //const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+        
         if (taskItem) {
           const task = taskItem.querySelector(".task");
           const taskDescription = taskItem.querySelector(".taskDescription");
@@ -196,24 +196,33 @@ console.log("ok enlazado")
         if (taskItem) {
           const task = taskItem.querySelector(".task");
           const taskDescription = taskItem.querySelector(".taskDescription");
-          const imgCheck = taskItem.querySelector(".imgCheck");
-          const imgTrash = taskItem.querySelector(".imgTrash");
-          const imgEdit = taskItem.querySelector(".editImage");
+          //const imgCheck = taskItem.querySelector(".imgCheck");
+          //const imgTrash = taskItem.querySelector(".imgTrash");
+          //const imgEdit = taskItem.querySelector(".editImage");
 
-          if (task && taskDescription && imgCheck && imgTrash && imgEdit) {
+          if (task && taskDescription) {
             task.innerHTML = newName;
             taskDescription.innerHTML = newDescription;
+          }
+        }
 
-            imgCheck.style.display = "inline-block";
-            imgTrash.style.display = "inline-block";
-            imgEdit.style.display = "inline-block";
+      }
+          const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+          if (taskItem) {
+            const imgCheck = taskItem.querySelector(".imgCheck");
+            const imgTrash = taskItem.querySelector(".imgTrash");
+            const imgEdit = taskItem.querySelector(".imgEdit");
+
+            if (imgCheck && imgTrash && imgEdit) {
+              imgCheck.style.display = "inline-block";
+              imgTrash.style.display = "inline-block";
+              imgEdit.style.display = "inline-block";
+            }
           }
           const saveButton = taskItem.querySelector("button");
             if (saveButton) {
             saveButton.remove();
             }
-        }
-      }
     };
 
     // Marcar la tarea como completada
