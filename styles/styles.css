@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 
 :root{
-    --tittlecolor: #F72F62;
-    --textcolor: #DE6174;
+    --tittlecolor: #D63F2F;
+    --textcolor: #FF8969;
     --backgroundcolor: #E3E3E3;
 
 }
@@ -11,7 +11,12 @@
 }
 
 body{
-    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0; 
 }
 
 #main-container{
@@ -53,7 +58,7 @@ body{
 }
 
 #dateRight{
-    font-size: 25px;
+    font-size: 50px;
     text-align: right;
     margin: 0px 50px 0px 0px;
 
@@ -71,9 +76,12 @@ body{
 #addTask{
     color: white;
     border:none;
-    border-radius: 35px;
+    border-radius: 50px;
     background-color: var(--tittlecolor);
     font-size: 20px;
+    text-align: center;
+    width: 100px; 
+    height: 50px;
 }
 
 #addDescription{
@@ -113,7 +121,7 @@ body{
 .newNameInput{
     border-radius: 25px;
     font-size: 15px;
-    margin: 20px;
+    margin: 10px;
     opacity: 0.5;
     padding-left: 20px;
     width: 40%;
@@ -130,15 +138,23 @@ body{
     
     color: white;
     border:none;
-    /*border-radius: 35px;*/
+    border-radius: 35px;
     background-color: grey;
     font-size: 20px;
-    margin: 0px 10px 0px 50px;
+    margin: 0px 10px 50px 10px;
     
 }
 
 .imgCheck{
-    height: auto;
+    margin-bottom: 50px;
+}
+
+.imgTrash{
+    margin-bottom: 50px;
+}
+
+.imgEdit{
+    margin-bottom: 50px;
 }
 
 .taskItem.done .taskInformation {

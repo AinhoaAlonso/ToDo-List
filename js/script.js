@@ -196,9 +196,6 @@ console.log("ok enlazado")
         if (taskItem) {
           const task = taskItem.querySelector(".task");
           const taskDescription = taskItem.querySelector(".taskDescription");
-          //const imgCheck = taskItem.querySelector(".imgCheck");
-          //const imgTrash = taskItem.querySelector(".imgTrash");
-          //const imgEdit = taskItem.querySelector(".editImage");
 
           if (task && taskDescription) {
             task.innerHTML = newName;
