@@ -129,6 +129,19 @@ console.log("ok enlazado")
     
       if (taskIndex !== -1) {
         const taskToEdit = tasksArray[taskIndex];
+
+        const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+        if (taskItem) {
+        const imgCheck = taskItem.querySelector(".imgCheck");
+        const imgTrash = taskItem.querySelector(".imgTrash");
+        const imgEdit = taskItem.querySelector(".imgEdit");
+
+          if (imgCheck && imgTrash && imgEdit) {
+          imgCheck.style.display = "none";
+          imgTrash.style.display = "none";
+          imgEdit.style.display = "none";
+        }
+      }
     
         // Crea un campo de entrada de texto para el nombre
         const newNameInput = document.createElement("input");
@@ -143,7 +156,7 @@ console.log("ok enlazado")
         newDescriptionInput.value = taskToEdit.description;
     
         // Reemplaza el contenido de la tarea con los campos de entrada
-        const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
+        //const taskItem = document.querySelector(`[data-task-id="${taskId}"]`);
         if (taskItem) {
           const task = taskItem.querySelector(".task");
           const taskDescription = taskItem.querySelector(".taskDescription");
@@ -153,8 +166,7 @@ console.log("ok enlazado")
             task.appendChild(newNameInput);
             taskDescription.appendChild(newDescriptionInput);
           }
-        }
-    
+        } 
         // Agrega un botón para guardar los cambios
         const saveButton = document.createElement("button");
         saveButton.type =("submit");
@@ -184,9 +196,17 @@ console.log("ok enlazado")
         if (taskItem) {
           const task = taskItem.querySelector(".task");
           const taskDescription = taskItem.querySelector(".taskDescription");
-          if (task && taskDescription) {
+          const imgCheck = taskItem.querySelector(".imgCheck");
+          const imgTrash = taskItem.querySelector(".imgTrash");
+          const imgEdit = taskItem.querySelector(".editImage");
+
+          if (task && taskDescription && imgCheck && imgTrash && imgEdit) {
             task.innerHTML = newName;
             taskDescription.innerHTML = newDescription;
+
+            imgCheck.style.display = "inline-block";
+            imgTrash.style.display = "inline-block";
+            imgEdit.style.display = "inline-block";
           }
           const saveButton = taskItem.querySelector("button");
             if (saveButton) {
